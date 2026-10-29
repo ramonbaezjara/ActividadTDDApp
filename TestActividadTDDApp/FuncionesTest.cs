@@ -5,7 +5,29 @@ namespace TestActividadTDDApp
     [TestClass]
     public sealed class FuncionesTest
     {
-     
+
+        [TestMethod]
+        [DataRow(-10, -1)]  // Caso número negativo
+        [DataRow(0, 1)]     // Caso cero
+        [DataRow(4, 24)]    // Caso número positivo
+        public void CalcularFactorial_VariosCasos(int n, long esperado)
+        {
+            //Test a implementar
+
+            long resultado = Funciones.CalcularFactorial(n);
+            Assert.AreEqual(esperado, resultado);
+
+        }
+
+
+
+
+
+
+
+
+
+        /*
 
         [TestMethod]
         public void CalcularFactorial_NumeroNegativo()
@@ -36,6 +58,7 @@ namespace TestActividadTDDApp
             long resultado = Funciones.CalcularFactorial(4);
             Assert.AreEqual(24, resultado);
         }
+        */
         
 
     }
