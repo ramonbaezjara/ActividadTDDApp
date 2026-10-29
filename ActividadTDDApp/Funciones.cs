@@ -8,5 +8,11 @@ namespace ActividadTDDApp
     {
         //Funciones a implementar
 
+        public static long CalcularFactorial(int n)
+        {
+            throw new NotImplementedException();
+            
+        }
+
     }
 }
