@@ -20,31 +20,18 @@ namespace TestActividadTDDApp
         }
 
 
-
-        [TestMethod]
-        public void EsContrasenyaValida_NullOVacia()
+        [DataTestMethod]
+        [DataRow(null, false, DisplayName = "Debería retornar falso si es null")]
+        [DataRow("", false, DisplayName = "Debería retornar falso si está vacía")]
+        [DataRow("#123456", false, DisplayName = "Debería retornar falso si tiene menos de 8 caracteres")]
+        [DataRow("123456789", false, DisplayName = "Debería retornar falso si no incluye '#'")]
+        [DataRow("Clave#1234", true, DisplayName = "Debería retornar verdadero si cumple todas las reglas")]
+        public void EsContrasenyaValida_DiversosCasos_DevuelveResultadoEsperado(string contrasenya, bool resultadoEsperado)
         {
-            Assert.IsFalse(Funciones.EsContrasenyaValida(null));
-            Assert.IsFalse(Funciones.EsContrasenyaValida(""));
+            bool resultado = Funciones.EsContrasenyaValida(contrasenya);
+            Assert.AreEqual(resultadoEsperado, resultado);
         }
 
-        [TestMethod]
-        public void EsContrasenyaValida_Menor8Caracteres()
-        {
-            Assert.IsFalse(Funciones.EsContrasenyaValida("#123456")); // 7 caracteres
-        }
-
-        [TestMethod]
-        public void EsContrasenyaValida_SinAlmohadilla()
-        {
-            Assert.IsFalse(Funciones.EsContrasenyaValida("123456789"));
-        }
-
-        [TestMethod]
-        public void EsContrasenyaValida_Valida()
-        {
-            Assert.IsTrue(Funciones.EsContrasenyaValida("Clave#1234"));
-        }
 
 
 
