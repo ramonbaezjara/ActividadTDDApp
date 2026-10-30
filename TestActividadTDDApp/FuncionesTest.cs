@@ -21,6 +21,44 @@ namespace TestActividadTDDApp
 
 
 
+        [TestMethod]
+        public void EsContrasenyaValida_NullOVacia()
+        {
+            Assert.IsFalse(Funciones.EsContrasenyaValida(null));
+            Assert.IsFalse(Funciones.EsContrasenyaValida(""));
+        }
+
+        [TestMethod]
+        public void EsContrasenyaValida_Menor8Caracteres()
+        {
+            Assert.IsFalse(Funciones.EsContrasenyaValida("#123456")); // 7 caracteres
+        }
+
+        [TestMethod]
+        public void EsContrasenyaValida_SinAlmohadilla()
+        {
+            Assert.IsFalse(Funciones.EsContrasenyaValida("123456789"));
+        }
+
+        [TestMethod]
+        public void EsContrasenyaValida_Valida()
+        {
+            Assert.IsTrue(Funciones.EsContrasenyaValida("Clave#1234"));
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -59,7 +97,7 @@ namespace TestActividadTDDApp
             Assert.AreEqual(24, resultado);
         }
         */
-        
+
 
     }
 }
